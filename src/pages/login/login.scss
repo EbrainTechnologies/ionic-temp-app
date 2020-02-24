@@ -1,0 +1,52 @@
+page-login {
+    .item {
+        padding-left: 0 !important;
+    }
+    .alert-ios .alert-button {
+        color: #6347bc !important;
+    }
+    .fullContent {
+        margin-top: 5rem;
+    }
+    h1 {
+        font-family: 'Niramit', sans-serif;
+        b {
+            font-family: 'Niramit', sans-serif;
+            font-weight: 900;
+            font-size: 3rem;
+        }
+    }
+}
+
+.toolbar-background {
+    border-color: #6347bc;
+    background: #6347bc;
+}
+
+.bar-button-default,
+.toolbar-title {
+    color: #fff;
+}
+
+.primeBtn {
+    margin-top: 2rem;
+    height: 3.2em;
+    background-color: #6347bc;
+}
+
+.secondBtn {
+    height: 3.2em;
+    background-color: #a39faf;
+}
+
+.item-ios.item-block .item-inner {
+    border-bottom: none !important;
+}
+
+.list>.item-block:first-child {
+    border-top: none !important;
+}
+
+ion-textarea {
+    border: 1.55px solid #6347bc
+}

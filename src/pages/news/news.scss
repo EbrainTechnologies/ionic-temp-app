@@ -1,0 +1,12 @@
+page-news {
+    .segment .segment-button {
+        background: #6347bc;
+        color: white;
+        border: 1px solid white;
+    }
+    .segment .segment-button.segment-activated {
+        color: #6347bc;
+        background-color: white;
+        border: 1px solid #6347bc;
+    }
+}

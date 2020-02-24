@@ -1,0 +1,112 @@
+<!--
+  Generated template for the ProfilePage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+    <ion-toolbar>
+        <ion-grid>
+            <ion-row>
+                <ion-col col-2>
+                    <button ion-button menuToggle icon-only>
+                        <ion-icon name='menu'></ion-icon>
+                    </button>
+                </ion-col>
+                <ion-col col-8>
+                    <ion-title align="center" class="headerName">Profile</ion-title>
+                </ion-col>
+                <ion-col col-2>
+                    <ion-buttons end>
+                        <button ion-button icon-only (click)="goHome()">
+                                         <ion-icon name="home"></ion-icon>
+                                     </button>
+                    </ion-buttons>
+                </ion-col>
+            </ion-row>
+        </ion-grid>
+    </ion-toolbar>
+</ion-header>
+
+
+<ion-content padding>
+    <ion-grid>
+        <form (ngSubmit)="updateProfile()">
+            <ion-row>
+                <ion-col col-12>
+                    <ion-item>
+                        <ion-label floating>Name</ion-label>
+                        <ion-input type="text" [(ngModel)]="currentUser.name" name="name"></ion-input>
+                    </ion-item>
+                </ion-col>
+                <ion-col col-12>
+                    <ion-list>
+                        <ion-item>
+                            <ion-label>Category</ion-label>
+                            <ion-select [(ngModel)]="currentUser.homecategory" name="homecategory">
+                                <ion-option value="owner">Owner</ion-option>
+                                <ion-option value="tenunt">Tenunt</ion-option>
+                            </ion-select>
+                        </ion-item>
+                    </ion-list>
+                </ion-col>
+                <ion-col col-12>
+                    <ion-list>
+                        <ion-item>
+                            <ion-label>Block</ion-label>
+                            <ion-select [(ngModel)]="currentUser.block" name="block">
+                                <ion-option value="a">A</ion-option>
+                                <ion-option value="b">B</ion-option>
+                                <ion-option value="c">C</ion-option>
+                                <ion-option value="d">D</ion-option>
+
+                            </ion-select>
+                        </ion-item>
+                    </ion-list>
+                </ion-col>
+                <ion-col col-12>
+                    <ion-list>
+                        <ion-item>
+                            <ion-label>Floor</ion-label>
+                            <ion-select [(ngModel)]="currentUser.floor" name="floor">
+                                <ion-option value="first">First</ion-option>
+                                <ion-option value="second">Second</ion-option>
+                                <ion-option value="third">Third</ion-option>
+                                <ion-option value="fourth">Fourth</ion-option>
+
+                            </ion-select>
+                        </ion-item>
+                    </ion-list>
+                </ion-col>
+                <ion-col col-12>
+                    <ion-list>
+                        <ion-item>
+                            <ion-label>Flat No</ion-label>
+                            <ion-select [(ngModel)]="currentUser.flatno" name="flatno">
+                                <ion-option value="s1">s1</ion-option>
+                                <ion-option value="f1">f1</ion-option>
+                                <ion-option value="t1">t1</ion-option>
+                                <ion-option value="fo1">fo1</ion-option>
+                            </ion-select>
+                        </ion-item>
+                    </ion-list>
+                </ion-col>
+                <ion-col col-12>
+                    <ion-item>
+                        <ion-label floating>Contact</ion-label>
+                        <ion-input type="text" [(ngModel)]="currentUser.contact" name="contact"></ion-input>
+                    </ion-item>
+                </ion-col>
+                <!-- <ion-col col-12 class="profileInput">
+                    <ion-item class="addBorderBtm">
+                        <ion-label floating>Email</ion-label>
+                        <ion-input type="text" [(ngModel)]="email.value" name="email"></ion-input>
+                    </ion-item>
+                </ion-col> -->
+                <ion-col col-12>
+                    <button ion-button block type="submit" class="primeBtn">Update</button>
+                </ion-col>
+            </ion-row>
+        </form>
+    </ion-grid>
+</ion-content>

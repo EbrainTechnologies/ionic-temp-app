@@ -1,0 +1,169 @@
+<!--
+  Generated template for the LandingpagePage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+    <ion-toolbar>
+        <ion-grid>
+            <ion-row>
+                <ion-col col-2>
+                    <button ion-button menuToggle icon-only>
+                        <ion-icon name='menu'></ion-icon>
+                    </button>
+                </ion-col>
+                <ion-col col-8>
+                    <ion-title align="center" class="headerName">Dashboard</ion-title>
+                </ion-col>
+                <ion-col col-2>
+                    <ion-buttons end>
+                        <button ion-button icon-only>
+                                         <ion-icon name="home"></ion-icon>
+                                     </button>
+                    </ion-buttons>
+                </ion-col>
+            </ion-row>
+        </ion-grid>
+    </ion-toolbar>
+</ion-header>
+
+
+
+<ion-content padding>
+    <ion-grid>
+        <ion-row class="ion-Row">
+            <ion-col col-6 align='center' class="colums-Dash" (click)="maintenace()">
+                <ion-icon name="hammer" class="iconDash"></ion-icon>
+                <span class="landingLists">Maintenace</span>
+            </ion-col>
+            <ion-col col-6 align='center' (click)="riseRequest()">
+                <ion-icon name="hand" class="iconDash"></ion-icon>
+                <span class="landingLists">Request</span>
+            </ion-col>
+        </ion-row>
+        <ion-row class="ion-Row">
+            <ion-col col-6 align='center' class="colums-Dash" (click)="newsUpdates()">
+                <ion-icon name="paper" class="iconDash"></ion-icon>
+                <span class="landingLists">News</span>
+            </ion-col>
+            <ion-col col-6 align='center' (click)="complaints()">
+                <ion-icon name="bookmark" class="iconDash"></ion-icon>
+                <span class="landingLists">Complaints</span>
+            </ion-col>
+        </ion-row>
+        <br>
+        <ion-row>
+            <ion-col col-12 align='center' id="header">
+                <h5>Notification</h5>
+            </ion-col>
+        </ion-row>
+    </ion-grid>
+
+
+    <div padding id="div">
+        <ion-segment [(ngModel)]="Notification">
+            <ion-segment-button value="Request" class="segment-button segment-activated">
+                Request
+            </ion-segment-button>
+            <ion-segment-button value="complaints">
+                Complaints
+            </ion-segment-button>
+            <ion-segment-button value="maintenace">
+                Maintenace
+            </ion-segment-button>
+        </ion-segment>
+    </div>
+
+    <div [ngSwitch]="Notification">
+        <ion-list *ngSwitchCase="'Request'">
+            <ion-card>
+                <ion-card-content class="landingLists" style="border:2px solid black;opacity:0.8" align='center' *ngIf="riseReqNotify==0">
+                    No New RiceRequest Notification
+                </ion-card-content>
+            </ion-card>
+            <ion-item class="removeBorder" *ngFor="let request of riseReqNotify" (swipe)="close(request._id)">
+                <div class="head">
+                    <li style="text-align:center" class="landingLists" align="center">Accepted
+                        <ion-icon style="color:green;" name="checkmark-circle"></ion-icon>
+                        <img id="closed" (click)="close(request._id)" src="../../assets/icon/del.png" style="width:15px;float:right;">
+                    </li>
+                </div>
+
+                <div class="content1">
+                    <li>Req Date:{{request.createdDateTime}}</li>
+                    <li style="float:right">Accepted Date:{{request.acceptedDateTime}}</li>
+                </div>
+                <div class="note">
+                    <li>Note:{{request.message}}</li>
+                </div>
+                <div class="by">
+                    <li align='center'>Accepted By:{{request.employeeName}}</li>
+                </div>
+            </ion-item>
+        </ion-list>
+        <!--------------End of request notification--------------->
+
+        <!---------------start of complaint notification---------->
+        <ion-list *ngSwitchCase="'complaints'">
+            <ion-card>
+                <ion-card-content style="border:2px solid black;opacity:0.8;color:black" align='center' *ngIf="complientNotify==0">
+                    No New Complaint Notification
+                </ion-card-content>
+            </ion-card>
+            <ion-item class="removeBorder" *ngFor="let complaint of complientNotify" (swipe)="close(complaint._id)">
+                <div class="head">
+                    <li style="text-align:center" class="landingLists">Accepted
+                        <ion-icon style="color:green;" name="checkmark-circle"></ion-icon>
+                        <img id="closed" (click)="close(complaint._id)" src="../../assets/icon/del.png" style="width:15px;float:right;">
+                    </li>
+                </div>
+
+                <div class="content1">
+                    <li>Req Date:{{complaint.createdDateTime}}</li>
+                    <li style="float:right">Accepted Date:{{complaint.acceptedDateTime}}</li>
+                </div>
+                <div class="note">
+                    <li>Note:{{complaint.message}}</li>
+                </div>
+                <div class="by">
+                    <li align='center'>Accepted By:{{complaint.employeeName}}</li>
+                </div>
+            </ion-item>
+        </ion-list>
+        <!-----------End of complaint notification------------->
+
+        <!-----------------Start of maintenance notification------>
+
+        <ion-list *ngSwitchCase="'maintenace'">
+            <ion-card>
+                <ion-card-content style="border:2px solid black;opacity:0.8;color:black" align='center' *ngIf="maintenanceNotify==0">
+                    No New Maintenace Notification
+                </ion-card-content>
+            </ion-card>
+
+            <ion-item class="removeBorder" *ngFor="let maintenance of maintenanceNotify" (swipe)="close(maintenance._id)">
+                <div class="head">
+                    <li style="text-align:center" class="landingLists">Accepted
+                        <ion-icon style="color:green;" name="checkmark-circle"></ion-icon>
+                        <img id="closed" (click)="close(maintenance._id)" src="../../assets/icon/del.png" style="width:15px;float:right;">
+                    </li>
+                </div>
+
+                <div class="content1">
+                    <li>Req Date:{{maintenance.createdDateTime}}</li>
+                    <li style="float:right">Accepted Date:{{maintenance.acceptedDateTime}}</li>
+                </div>
+                <div class="note">
+                    <li>Note:{{maintenance.message}}</li>
+                </div>
+                <div class="by">
+                    <li align='center'>Accepted By:{{maintenance.employeeName}}</li>
+                </div>
+            </ion-item>
+        </ion-list>
+
+        <!-------------------End of maintenance notification------------------->
+    </div>
+
+</ion-content>

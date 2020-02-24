@@ -1,0 +1,99 @@
+<!--
+  Generated template for the NewsPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+    <ion-toolbar>
+        <ion-grid>
+            <ion-row>
+                <ion-col col-2>
+                    <button ion-button menuToggle icon-only>
+                               <ion-icon name='menu'></ion-icon>
+                            </button>
+                </ion-col>
+                <ion-col col-8>
+                    <ion-title align="center" class="headerName">News</ion-title>
+                </ion-col>
+                <ion-col col-2>
+                    <ion-buttons end>
+                        <button ion-button icon-only (click)="goHome()">
+                                     <ion-icon name="home"></ion-icon>
+                                 </button>
+                    </ion-buttons>
+                </ion-col>
+            </ion-row>
+        </ion-grid>
+
+
+    </ion-toolbar>
+</ion-header>
+
+
+<ion-content padding>
+    <div padding id="div">
+        <ion-segment [(ngModel)]="Notification">
+            <ion-segment-button value="latestnews" class="segment-button segment-activated">
+                Latest
+            </ion-segment-button>
+            <ion-segment-button value="oldnews">
+                Old
+            </ion-segment-button>
+        </ion-segment>
+    </div>
+    <div [ngSwitch]="Notification">
+        <ion-list *ngSwitchCase="'latestnews'">
+            <ion-card *ngFor="let news of allNews">
+                <ion-grid>
+                    <ion-row>
+                        <ion-col col-6>
+                            <h5>Created: <span>{{news.name}}</span></h5>
+                        </ion-col>
+                        <ion-col col-6 align="center">
+                            <h5>Date: <span>{{news.date}}</span></h5>
+                        </ion-col>
+                    </ion-row>
+                </ion-grid>
+                <ion-card-header align="center">
+                    <h3>{{news.heading}}</h3>
+                    <h6>{{news.subject}}</h6>
+                </ion-card-header>
+                <ion-card-content>
+                    {{news.newsDetails}}
+                </ion-card-content>
+            </ion-card>
+        </ion-list>
+        <!--------------End of request notification--------------->
+
+        <!---------------start of complaint notification---------->
+        <ion-list *ngSwitchCase="'oldnews'">
+            <ion-card>
+                <ion-card-content style="border:2px solid black;opacity:0.8;color:black" align='center' *ngIf="complientNotify==0">
+                    No New Complaint Notification
+                </ion-card-content>
+            </ion-card>
+            <ion-item class="removeBorder" *ngFor="let complaint of complientNotify">
+                <div class="head">
+                    <li style="text-align:center">Accepted
+                        <ion-icon style="color:green;" name="checkmark-circle"></ion-icon>
+                        <img id="closed" (click)="close()" src="../../assets/icon/del.png" style="width:15px;float:right;">
+                    </li>
+                </div>
+
+                <div class="content1">
+                    <li>Req Date:{{complaint.createdDateTime}}</li>
+                    <li style="float:right">Accepted Date:{{complaint.acceptedDateTime}}</li>
+                </div>
+                <div class="note">
+                    <li>Note:{{complaint.message}}</li>
+                </div>
+                <div class="by">
+                    <li align='center'>Accepted By:{{complaint.employeeName}}</li>
+                </div>
+            </ion-item>
+        </ion-list>
+        <!-----------End of complaint notification------------->
+
+    </div>
+</ion-content>

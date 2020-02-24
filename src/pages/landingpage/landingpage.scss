@@ -1,0 +1,64 @@
+page-landingpage {
+    .iconDash {
+        // border: 1px solid orange;
+        padding: 2rem 5.5rem 0 5.5rem;
+        font-size: 5rem;
+        color: #6347bc;
+    }
+    .landingLists {
+        font-family: 'Niramit', sans-serif;
+    }
+    .maintenance {
+        background: red;
+        color: white;
+        border-radius: 30px;
+    }
+    .segment .segment-button {
+        background: #6347bc;
+        color: white;
+        border: 1px solid white;
+    }
+    .segment .segment-button.segment-activated {
+        color: #6347bc;
+        background-color: white;
+        border: 1px solid #6347bc;
+    }
+    .input-wrapper {
+        border: 1px solid black;
+        border-radius: 10px;
+        margin-right: 12px;
+    }
+    .content1 li,
+    .note,
+    .by {
+        display: inline;
+        font-size: 12px;
+        font-family: 'Niramit', sans-serif;
+    }
+    #header {
+        border-bottom: 1px solid #6347bc;
+        color: #6347bc;
+    }
+    #msgheader {
+        text-decoration: underline black;
+    }
+    .removeBorder {
+        border-bottom: none !important;
+        // border-top: none !important;
+    }
+    .addBorderBtm {
+        border-bottom: 1.55px solid #6347bc !important;
+    }
+    .label-md {
+        margin: 13px 8px 13px 8px;
+        font-family: "'Niramit', sans-serif"
+    }
+}
+
+.headerName {
+    padding-top: 5px;
+}
+
+//   .iconDash:nth-child(1) {
+//         padding: 2rem;
+//     }

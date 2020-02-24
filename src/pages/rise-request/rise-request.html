@@ -1,0 +1,153 @@
+<!--
+  Generated template for the RiseRequestPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+    <ion-toolbar>
+        <ion-grid>
+            <ion-row>
+                <ion-col col-2>
+                    <button ion-button menuToggle icon-only>
+                        <ion-icon name='menu'></ion-icon>
+                    </button>
+                </ion-col>
+                <ion-col col-8>
+                    <ion-title align="center" class="headerName">Rise Request</ion-title>
+                </ion-col>
+                <ion-col col-2>
+                    <ion-buttons end>
+                        <button ion-button icon-only (click)="goHome()">
+                          <ion-icon name="home"></ion-icon>
+                      </button>
+                    </ion-buttons>
+                </ion-col>
+            </ion-row>
+        </ion-grid>
+    </ion-toolbar>
+</ion-header>
+
+
+<ion-content padding>
+    <div padding id="div">
+        <ion-segment [(ngModel)]="Notification">
+            <ion-segment-button value="addnew" class="segment-button segment-activated">
+                Add new
+            </ion-segment-button>
+            <ion-segment-button value="inprogress">
+                Inprogress
+            </ion-segment-button>
+            <ion-segment-button value="completed">
+                Completed
+            </ion-segment-button>
+        </ion-segment>
+    </div>
+
+
+    <!-- start add new -->
+    <div [ngSwitch]="Notification">
+        <ion-list *ngSwitchCase="'addnew'">
+            <ion-grid>
+                <form (ngSubmit)="createRequest()">
+                    <ion-row>
+                        <ion-col col-12>
+                            <ion-item class="addBorderBtm">
+                                <ion-label floating>Name</ion-label>
+                                <ion-input type="text" [(ngModel)]="riseRequest.contactperson" name="contactperson"></ion-input>
+                            </ion-item>
+                        </ion-col>
+                        <ion-col col-12>
+                            <ion-item class="addBorderBtm">
+                                <ion-label floating>Delivery Name</ion-label>
+                                <ion-input type="text" [(ngModel)]="riseRequest.deliveryname" name="deliveryname"></ion-input>
+                            </ion-item>
+                        </ion-col>
+                        <ion-col col-12>
+                            <ion-item class="addBorderBtm">
+                                <ion-label floating>Contact</ion-label>
+                                <ion-input type="text" [(ngModel)]="riseRequest.deliverycontact" name="deliverycontact"></ion-input>
+                            </ion-item>
+                        </ion-col>
+                        <ion-col col-12>
+                            <label class="item item-input item-stacked-label">
+                                                <span class="input-label">Remarks</span>
+                                              
+                                                <ion-textarea row="4" type="text"  [(ngModel)]="riseRequest.remarks" name="remarks">
+                                                </ion-textarea>
+                                              </label>
+                        </ion-col>
+                        <ion-col col-12>
+                            <button ion-button block class="primeBtn">Apply</button>
+                        </ion-col>
+                    </ion-row>
+                </form>
+            </ion-grid>
+        </ion-list>
+        <!--------------End add new--------------->
+
+        <!---------------start inprogress---------->
+        <ion-list *ngSwitchCase="'inprogress'">
+            <ion-card>
+                <ion-card-content style="border:2px solid black;opacity:0.8;color:black" align='center' *ngIf="riseReqNotifications==0">
+                    No Records
+                </ion-card-content>
+            </ion-card>
+            <ion-item class="notifyBorder" *ngFor="let riseReq of riseReqNotifications">
+                <div class="head">
+                    <li style="text-align:center" class="fontFamily">Accepted
+                        <ion-icon style="color:green;" name="checkmark-circle"></ion-icon>
+                        <img id="closed" (click)="close()" src="../../assets/icon/del.png" style="width:15px;float:right;">
+                    </li>
+                </div>
+
+                <div class="content1">
+                    <li>Req Date:{{riseReq.createdDateTime}}</li>
+                    <li style="float:right">Accepted Date:{{riseReq.acceptedDateTime}}</li>
+                </div>
+                <div class="note">
+                    <li>Note:{{riseReq.message}}</li>
+                </div>
+                <div class="by">
+                    <li align='center'>Accepted By:{{riseReq.employeeName}}</li>
+                </div>
+                <div>
+                    <button ion-button block class="primeBtn fontFamily" (click)="completed(riseReq)">Completed</button>
+                </div>
+            </ion-item>
+        </ion-list>
+        <!-----------End inprogress------------->
+
+        <!-----------------Start completed------>
+
+        <ion-list *ngSwitchCase="'completed'">
+            <ion-card>
+                <ion-card-content style="border:2px solid black;opacity:0.8;color:black" align='center' *ngIf="completedNotifications==0">
+                    No Records
+                </ion-card-content>
+            </ion-card>
+
+            <ion-item class="notifyBorder" *ngFor="let completed of completedNotifications">
+                <div class="head">
+                    <li style="text-align:center" class="fontFamily">Accepted
+                        <ion-icon style="color:green;" name="checkmark-circle"></ion-icon>
+                        <img id="closed" (click)="close()" src="../../assets/icon/del.png" style="width:15px;float:right;">
+                    </li>
+                </div>
+
+                <div class="content1">
+                    <li>Req Date:{{completed.createdDateTime}}</li>
+                    <li style="float:right">Accepted Date:{{completed.acceptedDateTime}}</li>
+                </div>
+                <div class="note">
+                    <li>Note:{{completed.message}}</li>
+                </div>
+                <div class="by">
+                    <li align='center'>Accepted By:{{completed.employeeName}}</li>
+                </div>
+            </ion-item>
+        </ion-list>
+
+        <!-------------------End completed------------------->
+    </div>
+</ion-content>

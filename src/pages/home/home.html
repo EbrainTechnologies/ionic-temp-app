@@ -1,0 +1,28 @@
+<ion-menu [content]="content">
+    <ion-content>
+        <div class="userdetails">
+            <img src="./assets/imgs/bg-2.jpg" />
+        </div>
+        <ion-list>
+            <button class="addBorderBtm" menuClose ion-item (click)="openPage('dashboard')">
+              Dashboard
+            </button>
+            <button class="addBorderBtm" menuClose ion-item (click)="openPage('profile')">
+                Profile
+              </button>
+            <button class="removeBorder addBorderBtm" menuClose ion-item (click)="logout()">
+                Logout
+              </button>
+        </ion-list>
+        <!-- <div class="SignedDetails" align=center>
+            <h6>Signed In</h6>
+            {{email}}
+        </div> -->
+        <div align="center" class="SignedDetails">
+            <h5>PoweredBy</h5>
+            <p>Triodesk</p>
+        </div>
+    </ion-content>
+</ion-menu>
+
+<ion-nav [root]="rootPage" #content swipeBackEnabled="false"></ion-nav>

@@ -1,0 +1,98 @@
+<!--
+  Generated template for the ProfilePage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+    <ion-toolbar>
+        <!-- <ion-buttons> -->
+        <!-- <button ion-button menuToggle icon-only>
+        <ion-icon name='menu'></ion-icon>
+      </button> -->
+        <ion-title align="center">Profile</ion-title>
+        <!-- </ion-buttons> -->
+        <!-- <ion-buttons end>
+            <button ion-button icon-only>
+            <ion-icon name="home"></ion-icon>
+        </button>
+        </ion-buttons> -->
+    </ion-toolbar>
+</ion-header>
+
+
+<ion-content padding>
+    <ion-grid>
+        <form (ngSubmit)="creatProfile()">
+            <ion-row>
+                <ion-col col-12 class="profileInput">
+                    <ion-item class="addBorderBtm">
+                        <ion-label floating>Name</ion-label>
+                        <ion-input type="text" [(ngModel)]="profile.name" name="name"></ion-input>
+                    </ion-item>
+                </ion-col>
+                <ion-col col-12>
+                    <ion-list>
+                        <ion-item class="addBorderBtm">
+                            <ion-label>Category</ion-label>
+                            <ion-select [(ngModel)]="homecategory" [(ngModel)]="profile.homecategory" name="homecategory">
+                                <ion-option value="owner">Owner</ion-option>
+                                <ion-option value="tenunt">Tenunt</ion-option>
+                            </ion-select>
+                        </ion-item>
+                    </ion-list>
+                </ion-col>
+                <ion-col col-12>
+                    <ion-list>
+                        <ion-item class="addBorderBtm">
+                            <ion-label>Block</ion-label>
+                            <ion-select [(ngModel)]="block" [(ngModel)]="profile.block" name="block">
+                                <ion-option value="a">A</ion-option>
+                                <ion-option value="b">B</ion-option>
+                                <ion-option value="c">C</ion-option>
+                                <ion-option value="d">D</ion-option>
+
+                            </ion-select>
+                        </ion-item>
+                    </ion-list>
+                </ion-col>
+                <ion-col col-12>
+                    <ion-list>
+                        <ion-item class="addBorderBtm">
+                            <ion-label>Floor</ion-label>
+                            <ion-select [(ngModel)]="floor" [(ngModel)]="profile.floor" name="floor">
+                                <ion-option value="first">First</ion-option>
+                                <ion-option value="second">Second</ion-option>
+                                <ion-option value="third">Third</ion-option>
+                                <ion-option value="fourth">Fourth</ion-option>
+
+                            </ion-select>
+                        </ion-item>
+                    </ion-list>
+                </ion-col>
+                <ion-col col-12>
+                    <ion-list>
+                        <ion-item class="addBorderBtm">
+                            <ion-label>Flat No</ion-label>
+                            <ion-select [(ngModel)]="flatno" [(ngModel)]="profile.flatno" name="flatno">
+                                <ion-option value="s1">s1</ion-option>
+                                <ion-option value="f1">f1</ion-option>
+                                <ion-option value="t1">t1</ion-option>
+                                <ion-option value="fo1">fo1</ion-option>
+                            </ion-select>
+                        </ion-item>
+                    </ion-list>
+                </ion-col>
+                <ion-col col-12 class="profileInput">
+                    <ion-item class="addBorderBtm">
+                        <ion-label floating>Contact</ion-label>
+                        <ion-input type="text" [(ngModel)]="profile.contact" name="contact"></ion-input>
+                    </ion-item>
+                </ion-col>
+                <ion-col col-12>
+                    <button ion-button block type="submit" class="primeBtn">Create</button>
+                </ion-col>
+            </ion-row>
+        </form>
+    </ion-grid>
+</ion-content>
